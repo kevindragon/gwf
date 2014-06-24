@@ -9,26 +9,27 @@ type ControllerInterface interface {
 	Init(*Context)
 	Get()
 	Post()
-	Put()
 }
 
-// 控制器
+// 控制器顶层类
 type Controller struct {
 	context        *Context
 	responseWriter http.ResponseWriter
 	request        *http.Request
 }
 
+// 控制器的初始化方法
 func (c *Controller) Init(context *Context) {
 	c.context = context
 }
+
+// 对应的http当中的get请求
 func (c *Controller) Get() {
 	http404(c.context.responseWriter, c.context.request)
 }
+
+// 对应的http当中的post请求
 func (c *Controller) Post() {
-	http404(c.context.responseWriter, c.context.request)
-}
-func (c *Controller) Put() {
 	http404(c.context.responseWriter, c.context.request)
 }
 

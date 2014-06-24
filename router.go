@@ -1,7 +1,6 @@
 package gwf
 
 import (
-	"fmt"
 	"net/http"
 	"regexp"
 )
@@ -33,7 +32,6 @@ func (dr *DefaultRouter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					continue
 				}
 				params[v] = matches[0][i]
-				fmt.Println(i, v, v == "", matches[0][i])
 			}
 
 			context := &Context{w, r, params}
@@ -44,8 +42,6 @@ func (dr *DefaultRouter) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				value.Get()
 			case "POST":
 				value.Post()
-			case "PUT":
-				value.Put()
 			default:
 				value.Get()
 			}
